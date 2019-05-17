@@ -1,0 +1,1 @@
+Mapped conio.h library to run input command without stop the code
