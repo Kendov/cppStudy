@@ -1,56 +1,38 @@
 #include <iostream>
+#include "aluno.h"
+#include "vetor.h"
+
+
+
 
 using namespace std;
 int main(){
 
+    Aluno suquinho("suco de fruta");
+    Aluno corry("corry");
+    Aluno dadin("dadin");
+    Aluno dogo("dogo");
 
+    Vetor turma;
+    turma.append(suquinho);
+    turma.append(corry);
+    turma.append(dadin);
+    turma.append(dogo);
 
-    class aluno{
-        string name;
-        public:
-            string GetName(){
-                return name;
-            }
+    for(int i = 0; i <= 3; i++){
+        cout << turma.GetName(i).GetName()<< endl;
 
-            void SetName(string Nname){
-                name = Nname;
-            }
+    }
 
+    cout << "\n ************\n\n\n";
 
-    };
-
-    class vetor{
-        string Vname = "";
+    if(turma.have("corry")){
+        cout << "Registered" << endl;
+    }else{
+        cout << "Not registered" << endl;
+    }
         
-        public:
-            void append(string input){
-                Vname += input + " ";
-                
-            }
-            string GetName(){
-                
-                return Vname;
-
-                
-            }
-    };
-
-
-    vetor Vetor;
-    aluno Aluno;
-    Aluno.SetName("aadd");
-
-    cout << Aluno.GetName()<< endl;
-
-    Vetor.append("test1");
-    Vetor.append("test2");
-
-    cout << Vetor.GetName() << endl;
-
-    cin.get();
-
-
-
+    system("pause");
     
     
 }
