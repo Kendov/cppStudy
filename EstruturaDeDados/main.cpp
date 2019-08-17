@@ -8,30 +8,54 @@
 using namespace std;
 int main(){
 
-    Aluno suquinho("suco de fruta");
-    Aluno corry("corry");
-    Aluno dadin("dadin");
-    Aluno dogo("dogo");
+    Aluno a1("suco de fruta");
+    Aluno a2("corry");
+    Aluno a3("dadin");
+    Aluno a4("dogo");
+
+    Aluno a5("teste");
+    
 
     Vetor turma;
-    turma.append(suquinho);
-    turma.append(corry);
-    turma.append(dadin);
-    turma.append(dogo);
+    turma.append(a1);
+    turma.append(a2);
+    turma.append(a3);
+    turma.append(a4);
 
-    for(int i = 0; i <= 3; i++){
-        cout << turma.GetName(i).GetName()<< endl;
 
-    }
-
+    //mostra todos os alunos no vetor
+    cout << turma.toString() << endl;
+    
+    //*
     cout << "\n ************\n\n\n";
+    //*
 
-    if(turma.have("corry")){
+    //verifica se o objecto esta no vetor
+    if(turma.have(a2)){
         cout << "Registered" << endl;
     }else{
         cout << "Not registered" << endl;
     }
-        
+
+
+    
+    //tamanho do vetor
+    cout<<"tamanho do vetor: " << turma.tamanho()<<endl;
+
+
+    //novo aluno em uma posicao especifica
+    turma.appendInPos(a5, 1);
+    cout << turma.toString() << endl;
+
+    //*
+    cout << "\n ************\n\n\n";
+    //*
+
+    cout<<"tamanho do vetor: " << turma.tamanho()<<endl;
+
+    
+
+    
     system("pause");
     
     

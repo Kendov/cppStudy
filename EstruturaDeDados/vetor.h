@@ -18,13 +18,45 @@ class Vetor{
 
         }
 
-        bool have(std::string aluno){
+        bool have(Aluno &other){
             for(int i = 0; i <= index; i++){
-                if(aluno == alunos[i].GetName()){
+                if(other.GetName() == alunos[i].GetName()){
                     return true;
                 }
             }
             return false;
         }
+        int tamanho(){
+            return index;
+        }
+
+        std::string toString(){
+            std::string output = "[";
+            if(index == 0){
+                return "[ ]";
+            }
+            for(int i = 0; i < index; i++){
+                output += "\n  " + alunos[i].GetName() + ","; 
+            }
+            output += "\n]";
+            return output;
+        }
+
+
+
+        //*****************
+        void appendInPos(Aluno newAluno, int pos){            
+            if(pos > index || pos < 0){
+                std::cout<<"posicao invalida"<<std::endl;
+                return;
+            }
+            for (int i = index;i > pos;i--){
+                alunos[i] = alunos[i-1];
+            }
+            alunos[pos] = newAluno;
+            index++;
+            
+        }
+        
                 
     };
