@@ -4,11 +4,17 @@
 class Vetor{
     private:
         Aluno alunos[100];
-        int index = 0;
+        int quantidadeAlunos = 0;
+
+    private:
+        //check if position is valid based on index
+        bool isValid(int pos){
+            return pos >= 0 && pos <= pos? true:false; 
+        }
     
     public:
         void append(Aluno NewAluno){
-            alunos[index++] = NewAluno;
+            alunos[quantidadeAlunos++] = NewAluno;
             
         }
 
@@ -19,7 +25,7 @@ class Vetor{
         }
 
         bool have(Aluno &other){
-            for(int i = 0; i <= index; i++){
+            for(int i = 0; i <= quantidadeAlunos; i++){
                 if(other.GetName() == alunos[i].GetName()){
                     return true;
                 }
@@ -27,15 +33,15 @@ class Vetor{
             return false;
         }
         int tamanho(){
-            return index;
+            return quantidadeAlunos;
         }
 
         std::string toString(){
             std::string output = "[";
-            if(index == 0){
+            if(quantidadeAlunos == 0){
                 return "[ ]";
             }
-            for(int i = 0; i < index; i++){
+            for(int i = 0; i < quantidadeAlunos; i++){
                 output += "\n  " + alunos[i].GetName() + ","; 
             }
             output += "\n]";
@@ -46,16 +52,29 @@ class Vetor{
 
         //*****************
         void appendInPos(Aluno newAluno, int pos){            
-            if(pos > index || pos < 0){
+            if(pos > quantidadeAlunos || pos < 0){
                 std::cout<<"posicao invalida"<<std::endl;
                 return;
             }
-            for (int i = index;i > pos;i--){
+            for (int i = quantidadeAlunos;i > pos;i--){
                 alunos[i] = alunos[i-1];
             }
             alunos[pos] = newAluno;
-            index++;
+            quantidadeAlunos++;
             
+        }
+        void deletepos(int pos){
+            if(!isValid(pos)){
+                std::cout <<"valor invalido"<<std::endl;
+                return;
+            }
+            
+            for(int i = pos; i < quantidadeAlunos-1; i++){
+                alunos[i] = alunos[i+1];
+            }
+            alunos[quantidadeAlunos-1] = {};
+            quantidadeAlunos--;
+
         }
         
                 

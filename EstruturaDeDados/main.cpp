@@ -53,8 +53,9 @@ int main(){
 
     cout<<"tamanho do vetor: " << turma.tamanho()<<endl;
 
-    
-
+    turma.deletepos(2);
+    cout << turma.toString() << endl;
+    cout<<"tamanho do vetor: " << turma.tamanho()<<endl;
     
     system("pause");
     
