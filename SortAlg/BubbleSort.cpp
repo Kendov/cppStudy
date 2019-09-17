@@ -48,7 +48,24 @@ void insertionSort(long long int vec[], unsigned int n){
 
     }
 }
+void sortSelection(long long int vec[], unsigned int n){
+    exeTime time;
 
+    for(int fixo = 0; fixo < n - 1; fixo++){
+        int menor = fixo;
+        for(int i = menor +1; i < n ;i++){
+            if(vec[i] < vec[menor]){
+                menor = i;
+            }
+            
+        }
+        if(menor != fixo){
+            int f = vec[fixo];
+            vec[fixo] = vec[menor];
+            vec[menor] = f;
+        }
+    }
+}
 
 
 int main(int argc, char const *argv[])
@@ -59,7 +76,7 @@ int main(int argc, char const *argv[])
 
     unsigned int size = 10000;
 
-    //int vetor[] = {32,27,64,18,95,14,90,70,1};
+    //int vetor[] = {32,27,64,18,95,14,90,70,1};   test
     long long int vetor[size];
 
     //set random values for the array
@@ -67,32 +84,41 @@ int main(int argc, char const *argv[])
 
         vetor[i] = random(1, 100);
     }
+    //*********
+
+    //make copys of vetor for the others sorts
+    long long int vetor1[size];
+    long long int vetor2[size];
+    for(int i = 0;i<size;i++){
+        
+        vetor1[i] = vetor[i]; 
+        vetor2[i] = vetor[i]; 
+    }
+    //*********
+    
 
     bubblesort(vetor, size);
     std::cout<<"bubble ordenado \n"<<std::endl;
 
 
-
-    for(int i = 0; i < size; i++){
-
-        vetor[i] = random(1, 100);
-    }
-
-    insertionSort(vetor, size);
+    insertionSort(vetor1, size);
     std::cout<<"insertion ordenado \n"<<std::endl;
 
 
+    sortSelection(vetor2, size);
+    std::cout<<"selection ordenado \n"<<std::endl;
+
 
     //loop for printing the array
-    for (int i = 0; i < sizeof(vetor)/sizeof(vetor[0]) ;i++)
-    {
-        //std::cout<<vetor[i]<<"["<<i<<"]" <<", \n";
-    }
+    // for (int i = 0; i < sizeof(vetor)/sizeof(vetor[0]) ;i++)
+    // {
+    //     std::cout<<vetor[i]<<"   "<<vetor1[i]<<"   "<< vetor2[i] <<"\n";
+    // }
     std::cout<<std::endl;
 
 
     //size of array
-    std::cout << sizeof(vetor)/sizeof(vetor[0])<<std::endl;
+    std::cout << "size of array:" <<sizeof(vetor)/sizeof(vetor[0])<<std::endl;
 
 
     std::cin.get();

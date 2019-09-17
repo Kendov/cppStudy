@@ -16,7 +16,7 @@ struct exeTime
     ~exeTime(){
         end = std::chrono::high_resolution_clock::now();
         duration = end - start;
-        std::cout << duration.count() * 1000  << " ms "<< duration.count()<< " sec " << std::endl;
+        std::cout << duration.count() * 1000  << " ms "<< std::endl;
         
     }
 };
